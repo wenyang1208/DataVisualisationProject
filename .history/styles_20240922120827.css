@@ -1,0 +1,9 @@
+.unemployment_rate_map{
+    display: flex;
+    justify-content: center;
+}
+
+.vega-tooltip {
+    font-size: 14px !important; /* Increase font size */
+    padding: 10px !important; /* Increase padding */
+  }
