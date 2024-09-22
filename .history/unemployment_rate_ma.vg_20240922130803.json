@@ -10,7 +10,7 @@
   "height": 400,
   "projection": {"type": "equirectangular"},
   "data": {
-    "url": "https://raw.githubusercontent.com/wenyang-eng/data_vis_2/refs/heads/main/ne_1.topojson.json",
+    "url": "",
     "format": {"type": "topojson", "feature": "ne_10m_admin_1_states_provinces"}
   },
   "transform": [
@@ -18,7 +18,7 @@
       "lookup": "properties.name",
       "from": {
         "data": {
-          "url": "https://raw.githubusercontent.com/wenyang-eng/data_vis_2/refs/heads/main/lfs_qtr_state.csv"
+          "url": "https://raw.githubusercontent.com/wenyang-eng/data_vis_2/refs/heads/main/data_vis_2/lfs_qtr_state.csv"
         },
         "key": "state",
         "fields": ["avg_u_rate"]
