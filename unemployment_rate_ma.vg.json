@@ -1,16 +1,17 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
-  "text": "Average Unemployment Rate in Malaysia by State (2023)",
-  "fontSize": 24,  
-  "fontWeight": "bold", 
-  "font": "Time News Roman", 
-  "anchor": "middle"},
+    "text": "Average Unemployment Rate in Malaysia by State (2023)",
+    "fontSize": 24,
+    "fontWeight": "bold",
+    "font": "Times New Roman",
+    "anchor": "start"
+  },
   "width": 1000,
   "height": 400,
   "projection": {"type": "equirectangular"},
   "data": {
-    "url": "https://raw.githubusercontent.com/wenyang-eng/data_visualisation_2/refs/heads/main/data_vis_2/ne_1.topojson.json",
+    "url": "ne_1.topojson.json",
     "format": {"type": "topojson", "feature": "ne_10m_admin_1_states_provinces"}
   },
   "transform": [
@@ -18,7 +19,7 @@
       "lookup": "properties.name",
       "from": {
         "data": {
-          "url": "https://raw.githubusercontent.com/wenyang-eng/data_visualisation_2/refs/heads/main/data_vis_2/lfs_qtr_state.csv"
+          "url": "lfs_qtr_state.csv"
         },
         "key": "state",
         "fields": ["avg_u_rate"]
@@ -27,8 +28,8 @@
   ],
   "mark": {
     "type": "geoshape",
-    "stroke":"#000000",
-    "strokeWidth":0.5
+    "stroke": "#000000",
+    "strokeWidth": 0.5
   },
   "encoding": {
     "color": {
