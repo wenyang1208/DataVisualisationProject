@@ -57,7 +57,7 @@
           },
           "tooltip": [
             {"field": "Year", "type": "ordinal", "title": "Year"},
-            {"field": "Labor Force Value", "type": "quantitative", "title": "Number of People"},
+            {"field": "Labor Force Value", "type": "quantitative", "title": "Number of People (in thousands)", "format": ",.2f"},
             {"field": "Labor Force Category", "type": "nominal", "title": "Category"}
           ]
         }
@@ -72,8 +72,7 @@
           "align": "left",
           "dx": 5,
           "dy": -5,
-          "fontSize": 12,
-          "fontWeight": "bold"
+          "fontSize": 13
         },
         "encoding": {
           "text": {"value": "COVID-19 causes increases in unemployment in 2020-2021."},
