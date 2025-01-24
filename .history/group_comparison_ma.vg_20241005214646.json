@@ -1,0 +1,46 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Average Temperature Over Time",
+  "width": 600,
+  "height": 300,
+  "data": {
+    "values": [
+      {"date": "2023-01-01", "temp": 32}, {"date": "2023-02-01", "temp": 35},
+      {"date": "2023-03-01", "temp": 42}, {"date": "2023-04-01", "temp": 53},
+      {"date": "2023-05-01", "temp": 62}, {"date": "2023-06-01", "temp": 72},
+      {"date": "2023-07-01", "temp": 80}, {"date": "2023-08-01", "temp": 78},
+      {"date": "2023-09-01", "temp": 68}, {"date": "2023-10-01", "temp": 58},
+      {"date": "2023-11-01", "temp": 46}, {"date": "2023-12-01", "temp": 35}
+    ]
+  },
+  "params": [
+    {
+      "name": "dateRange",
+      "value": [{"year": 2023, "month": 1, "date": 1}, {"year": 2023, "month": 12, "date": 31}],
+      "bind": {
+        "input": "range",
+        "min": {"year": 2023, "month": 1, "date": 1},
+        "max": {"year": 2023, "month": 12, "date": 31},
+        "step": {"month": 1},
+        "name": "Date Range: "
+      }
+    }
+  ],
+  "transform": [
+    {"calculate": "timeParse(datum.date, '%Y-%m-%d')", "as": "parsedDate"},
+    {"filter": "time(datum.parsedDate) >= time(dateRange[0]) && time(datum.parsedDate) <= time(dateRange[1])"}
+  ],
+  "mark": "line",
+  "encoding": {
+    "x": {
+      "field": "parsedDate",
+      "type": "temporal",
+      "title": "Date"
+    },
+    "y": {
+      "field": "temp",
+      "type": "quantitative",
+      "title": "Temperature (°F)"
+    }
+  }
+}

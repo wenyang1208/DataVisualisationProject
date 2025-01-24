@@ -1,0 +1,58 @@
+.unemployment_rate_map {
+    justify-content: left;
+    position: relative;
+    display: flex;
+}
+
+.unemployment_rate_map h2 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    text-align: center; /* Optional, centers the title */
+    margin-bottom: 10px; /* Adds space between title and map */
+}
+
+#map_chart {
+    margin-top: 40px; /* Pushes the map down to leave space for the title */
+}
+
+.group_comparison{
+    display: flex;
+    justify-content: left;
+}
+
+.parallel_coordinate{
+    display: flex;
+    justify-content: left;
+}
+
+.annotation {
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.8); /* Optional: semi-transparent background for visibility */
+    padding: 5px;
+    border-radius: 3px;
+    font-size: 13px;
+    border: 1px solid black; /* Optional: border to highlight the annotation */
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+.parallel_container {
+    display: flex;               /* Use Flexbox to align child elements */
+    justify-content: space-between;  /* Space between the plot and the paragraph */
+    align-items: flex-start;      /* Align items to the top */
+}
+
+#parallel_coordinate_plot {
+    width: 80%;                  /* Set width for the plot container */
+}
+
+#parallel_coordinate_text {
+    margin-top: 50px;
+    width: 40%;                  /* Set width for the text container */
+    margin-left: 5px;            /* Add space between the plot and text */
+    margin-right: 40px;
+    font-size: 13px;              /* Adjust font size if necessary */
+    color: black;
+    font-family: Arial, Helvetica, sans-serif;
+}

@@ -1,0 +1,45 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": 250,  // Adjusted to fit multiple charts
+    "height": 200,
+    "data": {"url": "lfs_qtr.csv"},
+    "transform": [
+      {
+        "fold": ["lf_employed", "lf_unemployed", "lf_outside"],
+        "as": ["Labor Force Category", "Labor Force Value"]
+      }
+    ],
+    "facet": {
+      "field": "Labor Force Category", 
+      "type": "nominal", 
+      "columns": 3,  // Display 3 charts in a row (adjust as needed)
+      "title": "Labor Force Category"
+    },
+    "spec": {
+      "mark": {"type": "bar"},
+      "encoding": {
+        "x": {
+          "field": "year", 
+          "type": "ordinal", 
+          "title": "Year",
+          "axis": {"labelAngle": 0}
+        },
+        "y": {
+          "field": "Labor Force Value", 
+          "type": "quantitative", 
+          "title": "Number of People (in Thousands)"
+        },
+        "color": {
+          "field": "Labor Force Category", 
+          "type": "nominal",
+          "legend": null  // Hide color legend since it's redundant with the facets
+        },
+        "tooltip": [
+          {"field": "year", "type": "ordinal"},
+          {"field": "Labor Force Value", "type": "quantitative"},
+          {"field": "Labor Force Category", "type": "nominal"}
+        ]
+      }
+    }
+  }
+  

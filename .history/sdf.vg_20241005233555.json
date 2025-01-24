@@ -1,0 +1,30 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "data": {
+          "url": "lfs_qtr_state.csv"
+    },
+    "mark": "bar",
+    "params": [
+      {
+        "name": "selected_year",
+        "value": 2023,
+        "bind": {
+          "input": "select",
+          "options": [2022, 2023],
+          "labels": ["2022", "2023"],
+          "name": "Select Year: "
+        }
+      }
+    ],
+    "transform": [
+      {
+        "filter": "datum.year == selected_year"
+      }
+    ],
+    "encoding": {
+      "x": {"field": "state", "type": "nominal"},
+      "y": {"field": "avg_u_rate", "type": "quantitative"},
+      "color": {"field": "state", "type": "nominal"}
+    }
+  }
+  

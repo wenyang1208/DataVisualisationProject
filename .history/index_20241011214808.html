@@ -1,0 +1,99 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Employability of Labour Force in Malaysia</title>
+    <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
+    <script src="unemployment_rate.js"></script>
+    <script src="group_comparison.js"></script>
+    <script src="parallel_coordinate.js"></script>
+    <script src="stream_graph.js"></script>
+    <script src="age_group.js"></script>
+</head>
+<body>
+    <h1 id="main-title">Labor Market Trends and Gross Domestic Product (GDP) in Malaysia</h1>
+    <div class="unemployment_rate_map">
+        <h2>Average Unemployment Rate in Malaysia by State (2023)</h2>
+        <div id="map_chart"></div>
+        <div class="annotation" style="top: 60px; left: 345px;">
+            <div class="arrow-line"></div> <!-- Line from the annotation to the graph -->
+            <p style="color: black;">In 2023, there were <span style="font-weight: bold">169,800</span> jobless people in Sabah.</p>
+        </div>
+        <p id="map_text"> Based on the chart, there is significant variation in unemployment rates across the country. Sabah has the highest unemployment rate at 7.525%, followed by Labuan at 6.75%, indicating potential economic challenges in East Malaysia. Terengganu (4.425%) and Kelantan (3.975%) also report relatively high rates compared to other states. 
+            <br>
+            <br>
+            On the lower end, Putrajaya has the lowest unemployment rate at just 0.825%, followed by Pulau Pinang (2.125%) and Perlis (2.175%). States like Johor, Kedah, and Selangor show moderate unemployment rates between 2.4% and 2.45%. 
+            <br>
+            <br>
+            Overall, those unemployed are generally young people, both graduates and non-graduates, who have had trouble entering the job market. Because of this, the Malaysian government is encouraging companies to open up employment opportunities specifically to young adults.
+            <!-- https://www.statista.com/statistics/319019/unemployment-rate-in-malaysia/ -->
+        </p>
+    </div>
+    <div class="group_comparison">
+        <h2>Labor Force Distribution in Malaysia by Category (2010-2023)</h2>
+        <div id="bar_chart"></div>
+    </div>
+    <div id="isotype-container">
+        <h2>Underemployment in Malaysia by Age Group (2023)</h2>
+        <div id="inner-isotype-container">
+            <div id="isotype_age">
+                <!-- Isotype graph content goes here -->
+            </div>
+            <div class="annotation" style="position: absolute; top: 1360px; left: 600px;">
+                <div class="arrow-line-isotype"></div>
+                    In recent years, tertiary-educated workers risk underemployment
+                    <br>
+                    without market flexibility, due to the increasing demand for
+                    <br>
+                    advanced qualifications in the job market.
+                </p>
+            </div>
+            <p id="isotype_text">
+                In this context, underemployment is defined as working fewer than 30 hours per week while being willing to work more.
+                <br><br>
+                In 2023, underemployment in Malaysia shows notable differences across age groups. The 25-34 age group experiences the highest rate, with approximately 72,275 individuals underemployed, equating to 12 icons, each representing 6,000 people. The 45+ age group follows with around 47,775 individuals, or 8 icons. Both the 15-24 and 35-44 age groups have lower underemployment rates, with 32,650 and 30,150 individuals respectively, represented by 5 icons each.
+                <br><br>
+                Overall, it highlights that while the 25-34 age group faces the most significant underemployment, underemployment remains a concern across all age groups, particularly for those aged 45 and older.
+            </p>
+        </div>
+    </div>
+    <div class="gdp-stream">
+        <div id="stream_graph"></div>
+        <div class="annotation" style="position: absolute; top: 1600px; right: 100px;">
+            <p>
+                In recent years, tertiary-educated workers risk underemployment
+                <br>
+                without market flexibility, due to the increasing demand for
+                <br>
+                advanced qualifications in the job market.
+            </p>
+        </div>
+    </div>
+    <div class="parallel_coordinate">
+        <h2>Relationships between Demographics, GDP, and Employment in Malaysia (2023)</h2>
+        <div class="parallel_container">
+            <div id="parallel_coordinate_plot"></div>
+            <p id="parallel_coordinate_text">
+            Larger states like Selangor and Johor tend to have higher GDP growth, while smaller states such as Labuan and Perlis experience lower growth. Exceptions include Sabah, with a large population but low GDP growth, and Putrajaya, with a small population but high GDP growth.
+            <br>
+            <br>
+            Regions with larger populations, like Selangor, Johor, and Kuala Lumpur, have higher labor force participation rates, while smaller states like Labuan and Perlis show lower rates. Higher GDP growth states, like Pahang and Selangor, have moderate unemployment, whereas lower GDP growth states, such as Sabah and Sarawak, face higher unemployment.
+            <br>
+            <br>
+            Putrajaya stands out with high GDP growth, a strong participation rate, and low unemployment, while Sabah struggles with high unemployment despite a high participation rate.
+            </p>
+        </div>
+    </div>
+</body>
+</html>
+<!-- "title": {
+    "text": "Relationships between Demographics, GDP, and Employment in Malaysia (2023)",
+    "fontSize": 24,
+    "fontWeight": "bold",
+    "font": "Times New Roman",
+    "anchor": "start",
+    "dy": -20
+  }, -->

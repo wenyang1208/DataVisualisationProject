@@ -1,0 +1,68 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 600,
+  "height": 400,
+  "data": {
+    "url": "gdp_qtr_real_supply.csv"
+  },
+  "transform": [
+    {
+      "timeUnit": "year",
+      "field": "date",
+      "as": "year"
+    },
+    {
+      "aggregate": [{"op": "sum", "field": "value", "as": "total_value"}],
+      "groupby": ["year", "sector"]
+    }
+  ],
+  "mark": {
+    "type": "area",
+    "interpolate": "basis",
+    "tooltip": true
+  },
+  "params": [{
+    "name": "sector",
+    "select": {"type": "point", "fields": ["sector"]},
+    "bind": "legend"
+  }],
+  "encoding": {
+    "x": {
+      "field": "year",
+      "type": "temporal",
+      "timeUnit": "year",
+      "axis": {
+        "domain": false,
+        "format": "%Y",
+        "tickSize": 0,
+        "title": "Year"
+      }
+    },
+    "y": {
+      "field": "total_value",
+      "type": "quantitative",
+      "axis": {"title":"GDP annual growth"},
+      "stack": "center"
+    },
+    "color": {
+      "field": "sector",
+      "type": "nominal",
+      "scale": {"scheme": "category20b"},
+      "legend": {"title": "Sector"}
+    },
+    "opacity": {
+      "condition": {"param": "sector", "value": 1},
+      "value": 0.2
+    },
+    "tooltip": [
+      {"field": "year", "type": "temporal", "timeUnit": "year", "title": "Year"},
+      {"field": "sector", "type": "nominal", "title": "Sector"},
+      {"field": "total_value", "type": "quantitative", "title": "Value", "format": ".2f"}
+    ]
+  },
+  "config": {
+    "axisX": {
+      "labelAngle": -45
+    }
+  }
+}

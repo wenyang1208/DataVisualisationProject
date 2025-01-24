@@ -1,0 +1,79 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "config": {"view": {"stroke": ""}},
+  "width": 950,
+  "vconcat": [
+    {
+      "height": 300,
+      "data": {
+        "values": [
+          {"age": "15-24", "tru": 32.65},
+          {"age": "25-34", "tru": 72.275},
+          {"age": "35-44", "tru": 30.15},
+          {"age": "45+", "tru": 47.775}
+        ]
+      },
+      "transform": [
+        {
+          "calculate": "sequence(0, round(datum.tru / 6))",
+          "as": "icons"
+        },
+        {
+          "flatten": ["icons"]
+        }
+      ],
+      "mark": {"type": "text", "baseline": "middle"},
+      "encoding": {
+        "x": {
+          "field": "icons",
+          "type": "quantitative",
+          "axis": null,
+          "scale": {"domain": [-1, 12], "range": [0, 950]}
+        },
+        "y": {
+          "field": "age",
+          "type": "nominal",
+          "axis": {"title": "Age Group","labelFontSize":15,"titleFontSize":15}
+        },
+        "text": {"value": "👤"},
+        "size": {"value": 50},
+        "tooltip": [
+          {"field": "age", "type": "nominal", "title": "Age Group"},
+          {"field": "tru", "type": "quantitative", "title": "Unemployment Person (in thousands)", "format": ".2f"}
+        ]
+      }
+    },
+    {
+      "height": 50,
+      "data": {"values": [{"label": "1 icon = 6,000 persons","labelFontSize"}]},
+      "layer": [
+        {
+          "mark": {
+            "type": "text",
+            "align": "left",
+            "baseline": "middle",
+            "dx": 60
+          },
+          "encoding": {
+            "x": {"value": 0},
+            "y": {"value": 25},
+            "text": {"field": "label"}
+          }
+        },
+        {
+          "mark": {
+            "type": "text",
+            "align": "left",
+            "baseline": "middle"
+          },
+          "encoding": {
+            "x": {"value": 0},
+            "y": {"value": 25},
+            "text": {"value": "👤"},
+            "size": {"value": 50}
+          }
+        }
+      ]
+    }
+  ]
+}

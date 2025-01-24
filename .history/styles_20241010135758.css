@@ -1,0 +1,109 @@
+body, html {
+    overflow-x: hidden; /* Hides any overflow horizontally */
+    width: 100%;
+    background-color: #475bc0;
+}
+
+#main-title{
+    text-align: center;
+}
+
+.unemployment_rate_map {
+    justify-content: left;
+    position: relative;
+    display: flex;
+    background-color: white;
+    margin-top: 40px;
+    margin-left: 50px;
+    margin-right: 50px;
+    padding: 10;
+}
+
+.unemployment_rate_map h2 {
+    position: absolute;
+    text-align: center;
+    top: 0;
+    left: 0;
+    background-color: white;
+    width: 100%;
+    margin-top:-20px;
+    padding: 10 0 10 0;
+}
+
+#map_chart {
+    margin-top: 40px;
+}
+
+#map_text{
+    margin-top: 40px;
+    margin-left: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15;
+}
+
+.group_comparison{
+    display: flex;
+    margin-left: 20px;
+    margin-top: 40px;
+}
+
+.parallel_coordinate{
+    display: flex;
+    justify-content: left;
+}
+
+.annotation {
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.8); /* Optional: semi-transparent background for visibility */
+    padding: 5px;
+    border-radius: 3px;
+    font-size: 15;
+    border: 1px solid black; /* Optional: border to highlight the annotation */
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+.parallel_container {
+    display: flex;               /* Use Flexbox to align child elements */
+    justify-content: space-between;  /* Space between the plot and the paragraph */
+    align-items: flex-start;      /* Align items to the top */
+}
+
+#parallel_coordinate_plot {
+    width: 80%;                  /* Set width for the plot container */
+}
+
+#parallel_coordinate_text {
+    margin-top: 50px;
+    width: 40%;                  /* Set width for the text container */
+    margin-left: 5px;            /* Add space between the plot and text */
+    margin-right: 40px;
+    font-size: 15;              /* Adjust font size if necessary */
+    color: black;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.stream-and-isotype-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-top: 20px;
+}
+
+#stream_graph, #isotype_container {
+    flex: 1;
+}
+
+#isotype_containter {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+#isotype_age, #text2 {
+    flex: 1;
+}
+
+#text2{
+    font-size: 13px;  
+    font-family: Arial, Helvetica, sans-serif;
+}

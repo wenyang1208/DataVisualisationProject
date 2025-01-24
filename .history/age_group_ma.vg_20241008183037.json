@@ -1,0 +1,65 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "config": {"view": {"stroke": ""}},
+    "width": 400,
+    "height": 400,
+    "data": {
+      "values": [
+        {"age": "15-24", "tru": 32.65},
+        {"age": "25-34", "tru": 72.275},
+        {"age": "35-44", "tru": 30.15},
+        {"age": "45+", "tru": 47.775}
+      ]
+    },
+    "transform": [
+      {
+        "calculate": "sequence(0, round(datum.tru / 6))",
+        "as": "icons"
+      },
+      {
+        "flatten": ["icons"]
+      },
+      {
+        "calculate": "floor(datum.icons / 8)",
+        "as": "row"
+      },
+      {
+        "calculate": "datum.icons % 8",
+        "as": "column"
+      }
+    ],
+    "mark": {"type": "text", "baseline": "middle"},
+    "encoding": {
+      "x": {
+        "field": "column",
+        "type": "quantitative",
+        "axis": null,
+        "scale": {"domain": [0, 7], "range": [30, 430]}
+      },
+      "y": {
+        "field": "age",
+        "type": "nominal",
+        "axis": {"title": "Age Group"},
+        "sort": ["15-24", "25-34", "35-44", "45+"]
+      },
+      "yOffset": {
+        "field": "row",
+        "type": "quantitative",
+        "scale": {
+          "domain": [0, 2],
+          "range": [
+            0,            
+            100,         
+            60            
+          ]
+        }
+      },
+      "text": {"value": "👤"},
+      "size": {"value": 10},
+      "tooltip": [
+        {"field": "age", "type": "nominal", "title": "Age Group"},
+        {"field": "tru", "type": "quantitative", "title": "Underemployment (in thousands)", "format": ".2f"}
+      ]
+    }
+  }
+  

@@ -1,0 +1,61 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 600,
+  "height": 400,
+  "data": {
+    "url": "gdp_qtr_real_supply.csv"
+  },
+  "transform": [
+    {
+      "calculate": "datetime(year(datum.date), quarter(datum.date) * 3 - 2, 1)",
+      "as": "adjusted_date"
+    },
+    {
+      "calculate": "year(datum.adjusted_date) + '-Q' + quarter(datum.adjusted_date)",
+      "as": "quarter_label"
+    }
+  ],
+  "mark": {
+    "type": "area",
+    "tooltip": true
+  },
+  "params": [{
+    "name": "sector",
+    "select": {"type": "point", "fields": ["sector"]},
+    "bind": "legend"
+  }],
+  "encoding": {
+    "x": {
+      "field": "adjusted_date",
+      "type": "temporal",
+      "axis": {
+        "domain": false,
+        "format": "%Y-Q%q",
+        "tickSize": 0,
+        "title": "Year-Quarter"
+      }
+    },
+    "y": {
+      "aggregate": "sum",
+      "field": "value",
+      "type": "quantitative",
+      "axis": null,
+      "stack": "center"
+    },
+    "color": {
+      "field": "sector",
+      "type": "nominal",
+      "scale": {"scheme": "category20b"},
+      "legend": {"title": "Sector"}
+    },
+    "opacity": {
+      "condition": {"param": "sector", "value": 1},
+      "value": 0.2
+    }
+  },
+  "config": {
+    "axisX": {
+      "labelAngle": -45
+    }
+  }
+}

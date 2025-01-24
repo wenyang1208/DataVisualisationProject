@@ -1,0 +1,11 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Labor Force Distribution in Malaysia by Category (2010-2023)",
+    "fontSize": 24,
+    "fontWeight": "bold",
+    "font": "Times New Roman",
+    "anchor": "start"
+  },
+"signals":[]
+}

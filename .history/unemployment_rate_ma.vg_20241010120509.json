@@ -1,0 +1,69 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 800,
+  "height": 400,
+  "projection": {"type": "mercator"},
+  "layer": [
+    {
+      "data": {
+        "url": "ne_10m_admin_1_states_provinces.topojson.json",
+        "format": {"type": "topojson", "feature": "ne_10m_admin_1_states_provinces"}
+      },
+      "mark": {
+        "type": "geoshape",
+        "fill": "lightgrey",
+        "stroke": "#000000",
+        "strokeWidth": 0.5
+      }
+    },
+    {
+      "data": {
+        "url": "ne_10m_admin_1_states_provinces.topojson.json",
+        "format": {"type": "topojson", "feature": "ne_10m_admin_1_states_provinces"}
+      },
+      "transform": [
+        {
+          "filter": "datum.properties.admin == 'Malaysia'"
+        },
+        {
+          "lookup": "properties.name",
+          "from": {
+            "data": {
+              "url": "lfs_qtr_state.csv"
+            },
+            "key": "state",
+            "fields": ["avg_u_rate"]
+          }
+        }
+      ],
+      "mark": {
+        "type": "geoshape",
+        "stroke": "#000000",
+        "strokeWidth": 0.5
+      },
+      "encoding": {
+        "color": {
+          "field": "avg_u_rate",
+          "type": "quantitative",
+          "scale": {
+            "type": "threshold",
+            "domain": [1, 2, 3, 4],
+            "range": ["#fef0d9", "#fdd49e", "#fc8d59", "#e34a33", "#b30000"]
+          },
+          "condition": {"test": "!isValid(datum.avg_u_rate)", "value": "lightgrey"},
+          "legend": {
+            "title": "Unemployment Rate (%)"
+            ""
+          }
+        },
+        "tooltip": [
+          {"field": "properties.name", "type": "nominal", "title": "State"},
+          {"field": "avg_u_rate", "type": "quantitative", "title": "Average Unemployment Rate (%)", "format": ".2f"}
+        ]
+      }
+    }
+  ],
+  "config": {
+    "background": "#e6f3ff"
+  }
+}

@@ -1,0 +1,71 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "description": "Parallel coordinate plot for Malaysian states with GDP, population, participation rate, and unemployment rate.",
+    "data": {
+      "values": [
+        {"state":"Johor","population":4107.2,"annual_growth_GDP":4.099,"participation_rate":70.35,"unemployment_rate":2.45},
+        {"state":"Kedah","population":2189.3,"annual_growth_GDP":1.569,"participation_rate":66.55,"unemployment_rate":2.45},
+        {"state":"Kelantan","population":1859.8,"annual_growth_GDP":2.649,"participation_rate":61.625,"unemployment_rate":3.975},
+        {"state":"Melaka","population":1028.3,"annual_growth_GDP":2.972,"participation_rate":66.95,"unemployment_rate":2.75},
+        {"state":"Negeri Sembilan","population":1224.9,"annual_growth_GDP":1.815,"participation_rate":67.225,"unemployment_rate":2.4},
+        {"state":"Pahang","population":1643.2,"annual_growth_GDP":5.175,"participation_rate":65.625,"unemployment_rate":2.65},
+        {"state":"Pulau Pinang","population":1772.6,"annual_growth_GDP":3.274,"participation_rate":72.225,"unemployment_rate":2.125},
+        {"state":"Perak","population":2541.2,"annual_growth_GDP":2.651,"participation_rate":64.975,"unemployment_rate":3.25},
+        {"state":"Perlis","population":293.1,"annual_growth_GDP":2.145,"participation_rate":66,"unemployment_rate":2.175},
+        {"state":"Selangor","population":7209.7,"annual_growth_GDP":5.43,"participation_rate":76.7,"unemployment_rate":2.425},
+        {"state":"Terengganu","population":1210,"annual_growth_GDP":2.269,"participation_rate":60.225,"unemployment_rate":4.425},
+        {"state":"Sabah","population":3596.7,"annual_growth_GDP":1.328,"participation_rate":70.675,"unemployment_rate":7.525},
+        {"state":"Sarawak","population":2502.3,"annual_growth_GDP":1.175,"participation_rate":69.9,"unemployment_rate":3.45},
+        {"state":"Kuala Lumpur","population":2005.7,"annual_growth_GDP":3.652,"participation_rate":73.325,"unemployment_rate":3.325},
+        {"state":"Labuan","population":99,"annual_growth_GDP":1.918,"participation_rate":66.525,"unemployment_rate":6.75},
+        {"state":"Putrajaya","population":118.8,"annual_growth_GDP":3.803,"participation_rate":75.825,"unemployment_rate":0.825}
+      ]
+    },
+    "transform": [
+      {
+        "fold": ["population", "annual_growth_GDP", "participation_rate", "unemployment_rate"],
+        "as": ["Variable", "Value"]
+      }
+    ],
+    "width": 600,
+    "height": 400,
+    "mark": {
+      "type": "line",
+      "strokeWidth": 2,
+      "opacity": 0.5
+    },
+    "encoding": {
+      "x": {
+        "field": "Variable",
+        "type": "nominal",
+        "axis": {"labelAngle": 0, "title": "Variables"}
+      },
+      "y": {
+        "field": "Value",
+        "type": "quantitative",
+        "scale": {
+          "domain": {
+            "field": "Variable",
+            "range": {
+              "population": [0, 8000],
+              "annual_growth_GDP": [0, 6],
+              "participation_rate": [60, 80],
+              "unemployment_rate": [0, 8]
+            }
+          }
+        },
+        "axis": {"title": "Values"}
+      },
+      "color": {
+        "field": "state",
+        "type": "nominal",
+        "legend": {"title": "State"}
+      },
+      "detail": {"field": "state"},
+      "tooltip": [
+        {"field": "state", "type": "nominal"},
+        {"field": "Variable", "type": "nominal"},
+        {"field": "Value", "type": "quantitative", "format": ".2f"}
+      ]
+    }
+  }

@@ -1,0 +1,157 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "description": "Parallel coordinate plot for Malaysian states with Population, GDP growth, participation rate, and unemployment rate.",
+    "title": {
+        "text": "Relationships between Demographics, GDP, and Employment in Malaysia (2023)",
+        "fontSize": 24,
+        "fontWeight": "bold",
+        "font": "Times New Roman",
+        "anchor": "start",
+        "dy": -20
+      },
+    "data": {
+      "values": [
+        {"state":"Johor","Population":4107.2,"GDP Annual Growth":4.099,"Participation Rate":70.35,"Unemployment Rate":2.45},
+        {"state":"Kedah","Population":2189.3,"GDP Annual Growth":1.569,"Participation Rate":66.55,"Unemployment Rate":2.45},
+        {"state":"Kelantan","Population":1859.8,"GDP Annual Growth":2.649,"Participation Rate":61.625,"Unemployment Rate":3.975},
+        {"state":"Melaka","Population":1028.3,"GDP Annual Growth":2.972,"Participation Rate":66.95,"Unemployment Rate":2.75},
+        {"state":"Negeri Sembilan","Population":1224.9,"GDP Annual Growth":1.815,"Participation Rate":67.225,"Unemployment Rate":2.4},
+        {"state":"Pahang","Population":1643.2,"GDP Annual Growth":5.175,"Participation Rate":65.625,"Unemployment Rate":2.65},
+        {"state":"Pulau Pinang","Population":1772.6,"GDP Annual Growth":3.274,"Participation Rate":72.225,"Unemployment Rate":2.125},
+        {"state":"Perak","Population":2541.2,"GDP Annual Growth":2.651,"Participation Rate":64.975,"Unemployment Rate":3.25},
+        {"state":"Perlis","Population":293.1,"GDP Annual Growth":2.145,"Participation Rate":66,"Unemployment Rate":2.175},
+        {"state":"Selangor","Population":7209.7,"GDP Annual Growth":5.43,"Participation Rate":76.7,"Unemployment Rate":2.425},
+        {"state":"Terengganu","Population":1210,"GDP Annual Growth":2.269,"Participation Rate":60.225,"Unemployment Rate":4.425},
+        {"state":"Sabah","Population":3596.7,"GDP Annual Growth":1.328,"Participation Rate":70.675,"Unemployment Rate":7.525},
+        {"state":"Sarawak","Population":2502.3,"GDP Annual Growth":1.175,"Participation Rate":69.9,"Unemployment Rate":3.45},
+        {"state":"Kuala Lumpur","Population":2005.7,"GDP Annual Growth":3.652,"Participation Rate":73.325,"Unemployment Rate":3.325},
+        {"state":"Labuan","Population":99,"GDP Annual Growth":1.918,"Participation Rate":66.525,"Unemployment Rate":6.75},
+        {"state":"Putrajaya","Population":118.8,"GDP Annual Growth":3.803,"Participation Rate":75.825,"Unemployment Rate":0.825}
+      ]
+    },
+    "width": 600,
+    "height": 300,
+    "transform": [
+      {"window": [{"op": "count", "as": "index"}]},
+      {"fold": ["Population", "GDP Annual Growth", "Participation Rate", "Unemployment Rate"]},
+      {
+        "joinaggregate": [
+          {"op": "min", "field": "value", "as": "min"},
+          {"op": "max", "field": "value", "as": "max"}
+        ],
+        "groupby": ["key"]
+      },
+      {
+        "calculate": "(datum.value - datum.min) / (datum.max - datum.min)",
+        "as": "norm_val"
+      },
+      {
+        "calculate": "(datum.min + datum.max) / 2",
+        "as": "mid"
+      }
+    ],
+    "layer": [
+      {
+        "mark": {"type": "rule", "color": "#ccc"},
+        "encoding": {
+          "detail": {"aggregate": "count"},
+          "x": {"field": "key"}
+        }
+      },
+      {
+        "params": [{
+          "name": "legendSelect",
+          "select": {"type": "point", "fields": ["state"]},
+          "bind": "legend"
+        }],
+        "mark": "line",
+        "encoding": {
+        "color": {
+        "field": "state",
+        "type": "nominal",
+        "scale": {
+            "domain": ["Johor", "Kedah", "Kelantan", "Melaka", "Negeri Sembilan", "Pahang", "Pulau Pinang", "Perak", "Perlis", "Selangor", "Terengganu", "Sabah", "Sarawak", "Kuala Lumpur", "Labuan", "Putrajaya"],
+            "range": [ "#86C1DC", "#4682B4", "#000080", "#7FFFD4", "#5F9EA0", "#2E8B57", "#DAA520", "#808000", "#FFD700", "#FFA500", "#8B4513", "#C71585", "#6A5ACD", "#9932CC", "#9467bd", "#8c564b"]
+        }
+        },
+          "detail": {"type": "nominal", "field": "index"},
+          "opacity": {
+            "condition": [
+              {"param": "legendSelect", "value": 1}
+            ],
+            "value": 0.2
+          },
+          "x": {"type": "nominal", "field": "key"},
+          "y": {"type": "quantitative", "field": "norm_val", "axis": null},
+          "tooltip": [
+            {"type": "nominal", "field": "state"},
+            {"type": "quantitative", "field": "value", "format": ".2f"}
+          ]
+        }
+      },
+      {
+        "encoding": {
+          "x": {"type": "nominal", "field": "key"},
+          "y": {"value": 0}
+        },
+        "layer": [
+          {
+            "mark": {"type": "text", "style": "label"},
+            "encoding": {
+              "text": {"aggregate": "max", "field": "max", "format": ".2f"}
+            }
+          },
+          {
+            "mark": {"type": "tick", "style": "tick", "size": 8, "color": "#ccc"}
+          }
+        ]
+      },
+      {
+        "encoding": {
+          "x": {"type": "nominal", "field": "key"},
+          "y": {"value": 150}
+        },
+        "layer": [
+          {
+            "mark": {"type": "text", "style": "label"},
+            "encoding": {
+              "text": {"aggregate": "min", "field": "mid", "format": ".2f"}
+            }
+          },
+          {
+            "mark": {"type": "tick", "style": "tick", "size": 8, "color": "#ccc"}
+          }
+        ]
+      },
+      {
+        "encoding": {
+          "x": {"type": "nominal", "field": "key"},
+          "y": {"value": 300}
+        },
+        "layer": [
+          {
+            "mark": {"type": "text", "style": "label"},
+            "encoding": {
+              "text": {"aggregate": "min", "field": "min", "format": ".2f"}
+            }
+          },
+          {
+            "mark": {"type": "tick", "style": "tick", "size": 8, "color": "#ccc"}
+          }
+        ]
+      }
+    ],
+    "config": {
+      "axisX": {"domain": false, "labelAngle": 0, "tickColor": "#ccc", "title": null},
+      "view": {"stroke": null},
+      "style": {
+        "label": {"baseline": "middle", "align": "right", "dx": -5},
+        "tick": {"orient": "horizontal"}
+      },
+      "legend": {
+        "symbolType": "square",
+        "strokeWidth": 2,
+        "symbolOpacity": 0.8
+      }
+    }
+  }

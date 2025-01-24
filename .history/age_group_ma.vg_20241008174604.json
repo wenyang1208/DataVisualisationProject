@@ -1,0 +1,42 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "config": {"view": {"stroke": ""}},
+    "width": 800,
+    "height": 200,
+    "data": {
+      "values": [
+        {"age": "15-24", "tru": 32.65},
+        {"age": "25-34", "tru": 72.275},
+        {"age": "35-44", "tru": 30.15},
+        {"age": "45+", "tru": 47.775}
+      ]
+    },
+    "transform": [
+      {
+        "calculate": "sequence(0, round(datum.tru / 5))",
+        "as": "icons"
+      },
+      {
+        "flatten": ["icons"]
+      }
+    ],
+    "mark": {"type": "text", "baseline": "middle"},
+    "encoding": {
+      "x": {
+        "field": "icons",
+        "type": "quantitative",
+        "axis": null
+      },
+      "y": {
+        "field": "age",
+        "type": "nominal",
+        "axis": {"title": "Age Group"}
+      },
+      "text": {"value": "📊"},
+      "size": {"value": 20},
+      "tooltip": [
+        {"field": "age", "type": "nominal", "title": "Age Group"},
+        {"field": "tru", "type": "quantitative", "title": "Unemployed (%)", "format": ".2f"}
+      ]
+    }
+  }

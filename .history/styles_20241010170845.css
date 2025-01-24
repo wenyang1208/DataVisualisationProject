@@ -1,0 +1,145 @@
+body, html {
+    overflow-x: hidden; /* Hides any overflow horizontally */
+    width: 100%;
+    background-color: #832439;
+}
+
+#main-title{
+    text-align: center;
+    color: white;
+}
+
+.unemployment_rate_map {
+    justify-content: center;
+    position: relative;
+    display: flex;
+    border-radius: 10px;
+    background-color: white;
+    margin-top: 40px;
+    margin-left: 25px;
+    margin-right: 45px;
+    padding: 10 20 10 20;
+}
+
+.unemployment_rate_map h2 {
+    position: absolute;
+    text-align: center;
+    top: 0;
+    left: 0;
+    border-radius: 10px;
+    background-color: white;
+    width: 100%;
+    margin-top:-20px;
+    padding: 10 0 10 0;
+}
+
+#map_chart {
+    margin-top: 40px;
+}
+
+#map_text{
+    margin-top: 40px;
+    margin-left: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15;
+}
+
+.group_comparison{
+    display: flex;
+    position: relative;
+    margin-left: 20px;
+    margin-top: 80px;
+    border-radius: 10px;
+    margin-right: 45px;
+    background-color: white;
+    padding: 10px 10px 10px 10px;
+}
+
+.group_comparison h2{
+    position: absolute;
+    text-align: center;
+    top: 0;
+    left: 0;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    background-color: white;
+    width: 100%;
+    margin-top:-40px;
+    padding: 10 0 10 0;
+}
+
+#isotype-container {
+    display: flex;
+    flex-direction: column; /* Ensures the title is stacked above the graph */
+    background-color: white;
+    margin-top: 40px;
+    margin-right: 40px;
+    margin-left: 20px;
+    margin-bottom: 40px;
+    border-radius: 10px;
+    padding: 10 20 10 20;
+}
+
+#isotype-container h2{
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    font-family: "Times New Roman", Times, serif;
+    margin-bottom: 10px; /* Adds space between the title and the graph */
+}
+
+#inner-isotype-container{
+    display: flex;
+    flex-direction: row; /* Ensures the title is stacked above the graph */
+    background-color: white;
+}
+
+#isotype_text{
+    margin-left: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15;
+}
+
+.gdp-stream{
+    background-color: white;
+    padding: 10 10 10 10;
+    margin-left: 20px;
+    margin-right: 40px;
+    margin-bottom: 40;
+    border-radius: 10px;
+}
+
+.parallel_coordinate{
+    display: flex;
+    justify-content: left;
+}
+
+.annotation {
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.8); /* Optional: semi-transparent background for visibility */
+    padding: 5px;
+    border-radius: 3px;
+    font-size: 15;
+    border: 1px solid black; /* Optional: border to highlight the annotation */
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+.parallel_container {
+    display: flex;               /* Use Flexbox to align child elements */
+    justify-content: space-between;  /* Space between the plot and the paragraph */
+    align-items: flex-start;      /* Align items to the top */
+}
+
+#parallel_coordinate_plot {
+    width: 80%;                  /* Set width for the plot container */
+}
+
+#parallel_coordinate_text {
+    margin-top: 50px;
+    width: 40%;                  /* Set width for the text container */
+    margin-left: 5px;            /* Add space between the plot and text */
+    margin-right: 40px;
+    font-size: 15;              /* Adjust font size if necessary */
+    color: black;
+    font-family: Arial, Helvetica, sans-serif;
+}

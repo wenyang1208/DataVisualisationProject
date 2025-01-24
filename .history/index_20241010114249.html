@@ -1,0 +1,50 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Employability of Labour Force in Malaysia</title>
+    <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
+    <script src="unemployment_rate.js"></script>
+    <script src="group_comparison.js"></script>
+    <script src="parallel_coordinate.js"></script>
+    <script src="stream_graph.js"></script>
+    <script src="age_group.js"></script>
+</head>
+<body>
+    <h1>Labor Market Trends and Gross Domestic Product (GDP) in Malaysia</h1>
+    <div class="unemployment_rate_map">
+        <h2>Average Unemployment Rate in Malaysia by State (2023)</h2>
+        <div id="map_chart"></div>
+        <div class="annotation" style="top: 50px; left: 400px;">
+            <p style="color: black;">In 2023, there were <span style="font-weight: bold">169,800</span> jobless people in Sabah.</p>
+        </div>
+    </div>
+    <div class="group_comparison">
+        <div id="bar_chart"></div>
+    </div>
+    <div class="parallel_coordinate">
+        <div class="parallel_container">
+            <div id="parallel_coordinate_plot"></div>
+            <p id="parallel_coordinate_text">
+              
+            States with larger populations, like Selangor and Johor, generally have higher GDP growth, while smaller states such as Labuan and Perlis tend to have lower growth. However, exceptions like Sabah, with a large population but low GDP growth, and Putrajaya, with a small population but high GDP growth, show that this is not a strict rule.
+            <br>
+            </p>
+        </div>
+    </div>
+    <div class="stream-and-isotype-container">
+        <div id="stream_graph"></div>
+        <div id="isotype-container">        
+            <div id="isotype_age"></div>
+            <p id="text2">6,000 thousands people per icon
+                <br>
+                <br>
+                The visualizations illustrate Malaysia's economic landscape and labor market in 2023. The GDP Annual Growth by Economic Sector graph shows that the Services and Manufacturing sectors significantly contribute to growth, with Services leading in annual percentages. In contrast, the Underemployment in Malaysia by Age Group chart highlights higher underemployment rates among those aged 15-24, indicating job matching challenges for youth. Together, these graphs underscore the need to address underemployment to enhance economic productivity and reflect the ongoing shift toward a service-oriented economy in Malaysia.
+            </p>
+        </div>
+    </div>
+</body>
+</html>

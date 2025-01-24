@@ -1,0 +1,114 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 24px;
+}
+
+h2 {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.unemployment_rate_map {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers content horizontally */
+    margin-bottom: 40px;
+}
+
+#map_chart {
+    width: 100%;
+    height: auto;
+}
+
+.annotation {
+    position: absolute;
+    top: 50px;
+    left: 50%;
+    transform: translateX(-50%); /* Center the annotation horizontally */
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid black;
+    font-size: 14px;
+    max-width: 300px;
+    text-align: center;
+}
+
+.group_comparison {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+#bar_chart {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.parallel_coordinate {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 40px;
+}
+
+.parallel_container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+#parallel_coordinate_plot {
+    width: 65%; /* Adjust width for the plot */
+}
+
+#parallel_coordinate_text {
+    width: 30%; /* Adjust width for the text */
+    font-size: 14px;
+    margin-left: 20px;
+}
+
+#stream_graph {
+    width: 100%;
+    max-width: 800px;
+    margin: 40px auto;
+}
+
+@media (max-width: 768px) {
+    .parallel_container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #parallel_coordinate_plot,
+    #parallel_coordinate_text {
+        width: 100%;
+    }
+
+    .annotation {
+        top: 20px;
+        left: 50px;
+        transform: none; /* Remove centering transform for smaller screens */
+    }
+}

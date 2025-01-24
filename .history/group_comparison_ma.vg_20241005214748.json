@@ -1,0 +1,52 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Average Temperature Over Time",
+  "width": 600,
+  "height": 300,
+  "data": {
+    "values": [
+      {"date": "2023-01-01", "temp": 32}, {"date": "2023-02-01", "temp": 35},
+      {"date": "2023-03-01", "temp": 42}, {"date": "2023-04-01", "temp": 53},
+      {"date": "2023-05-01", "temp": 62}, {"date": "2023-06-01", "temp": 72},
+      {"date": "2023-07-01", "temp": 80}, {"date": "2023-08-01", "temp": 78},
+      {"date": "2023-09-01", "temp": 68}, {"date": "2023-10-01", "temp": 58},
+      {"date": "2023-11-01", "temp": 46}, {"date": "2023-12-01", "temp": 35}
+    ]
+  },
+  "params": [
+    {
+      "name": "dateRange",
+      "value": [0, 11],
+      "bind": {
+        "input": "range",
+        "min": 0,
+        "max": 11,
+        "step": 1,
+        "name": "Month Range: "
+      }
+    }
+  ],
+  "transform": [
+    {"calculate": "timeParse(datum.date, '%Y-%m-%d')", "as": "parsedDate"},
+    {"calculate": "month(datum.parsedDate)", "as": "monthIndex"},
+    {"filter": "datum.monthIndex >= dateRange[0] && datum.monthIndex <= dateRange[1]"}
+  ],
+  "mark": "line",
+  "encoding": {
+    "x": {
+      "field": "parsedDate",
+      "type": "temporal",
+      "title": "Date",
+      "axis": {"format": "%b"}
+    },
+    "y": {
+      "field": "temp",
+      "type": "quantitative",
+      "title": "Temperature (°F)"
+    },
+    "tooltip": [
+      {"field": "parsedDate", "type": "temporal", "title": "Date", "format": "%B %d, %Y"},
+      {"field": "temp", "type": "quantitative", "title": "Temperature (°F)"}
+    ]
+  }
+}

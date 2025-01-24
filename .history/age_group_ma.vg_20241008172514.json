@@ -1,0 +1,44 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "config": {"view": {"stroke": ""}},
+    "width": 800,
+    "height": 200,
+    "data": {
+      "url": "lfs_qtr_tru_age.csv"
+    },
+    "transform": [
+      {
+        "calculate": "round(datum.tru / 5)",
+        "as": "icon_count"
+      },
+      {
+        "flatten": ["icon_count"],  // Unroll icon count to repeat emoji
+        "as": "icon"
+      }
+    ],
+    "mark": {"type": "text", "baseline": "middle"},
+    "encoding": {
+      "x": {
+        "field": "icon",
+        "type": "ordinal",
+        "axis": null
+      },
+      "y": {
+        "field": "age",
+        "type": "nominal",
+        "axis": {"title": "Age Group"}
+      },
+      "text": {
+        "value": "📊"  // You can replace this with any symbol or emoji
+      },
+      "size": {
+        "value": 65  // Controls the size of the emoji
+      },
+      "tooltip": [
+        {"field": "age", "type": "nominal", "title": "Age Group"},
+        {"field": "tru", "type": "quantitative", "title": "Unemployed (%)"}
+      ]
+    }
+  }
+  
+  

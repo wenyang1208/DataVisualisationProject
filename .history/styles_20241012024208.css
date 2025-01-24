@@ -1,0 +1,218 @@
+body, html {
+    overflow-x: hidden; /* Hides any overflow horizontally */
+    width: 100%;
+    background-color: #832439;
+}
+
+#main-title {
+    margin-top: 20px;
+    text-align: center;
+    color: white;
+    background-color: #333;
+}
+
+.unemployment_rate_map {
+    justify-content: center;
+    position: relative;
+    display: flex;
+    border-radius: 10px;
+    background-color: white;
+    margin-top: 40px;
+    margin-left: 25px;
+    margin-right: 45px;
+    padding: 20px 20px 10px 20px;
+}
+
+.unemployment_rate_map h2 {
+    position: absolute;
+    text-align: center;
+    top: 0;
+    left: 0;
+    border-radius: 10px;
+    background-color: white;
+    width: 100%;
+    margin-top: 10px;
+}
+
+#map_chart {
+    margin-top: 40px;
+}
+
+#map_text {
+    margin-top: 40px;
+    margin-left: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+}
+
+.group_comparison {
+    display: flex;
+    position: relative;
+    margin-left: 20px;
+    margin-top: 80px;
+    border-radius: 10px;
+    margin-right: 45px;
+    background-color: white;
+    padding: 10px 10px 10px 10px;
+}
+
+.group_comparison h2 {
+    position: absolute;
+    text-align: center;
+    top: 0;
+    left: 0;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    background-color: white;
+    width: 100%;
+    margin-top: -40px;
+    padding: 10px 0;
+}
+
+#isotype-container {
+    display: flex;
+    flex-direction: column; /* Ensures the title is stacked above the graph */
+    background-color: white;
+    margin-top: 40px;
+    margin-right: 40px;
+    margin-left: 20px;
+    margin-bottom: 40px;
+    border-radius: 10px;
+    padding: 10px 20px;
+}
+
+#isotype-container h2 {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    font-family: "Times New Roman", Times, serif;
+    margin-bottom: 10px; /* Adds space between the title and the graph */
+}
+
+#inner-isotype-container {
+    display: flex;
+    flex-direction: row; /* Ensures the graph and text are aligned horizontally */
+    background-color: white;
+}
+
+#isotype_text {
+    margin-left: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+}
+
+.gdp-stream {
+    background-color: white;
+    height: 550px;
+    padding: 10px 10px 10px 20px;
+    margin-left: 20px;
+    margin-right: 40px;
+    margin-bottom: 40px;
+    border-radius: 10px;
+}
+
+.gdp-stream h2{
+    position: relative;
+    text-align: center;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.annotation {
+    position: absolute;
+    padding: 5px;
+    border-radius: 3px;
+    font-size: 15px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.arrow-line {
+    position: absolute;
+    top: 30px; /* Adjust based on the graph position */
+    left: 350px; /* Adjust based on the annotation and graph positioning */
+    width: 1px;
+    height: 50px;
+    background-color: black; /* Line color */
+    transform: rotate(-30deg);
+    transform-origin: bottom;
+}
+
+.arrow-line-isotype {
+    position: absolute;
+    top: -25px; /* Adjust based on the graph position */
+    left: 180px; /* Adjust based on the annotation and graph positioning */
+    width: 1px;
+    height: 25px;
+    background-color: black; /* Line color */
+}
+
+.arrow-line-stream {
+    position: absolute;
+    z-index: 10;
+    top: 2020px; /* Adjust based on the graph position */
+    right: 290px; /* Adjust based on the annotation and graph positioning */
+    width: 1px;
+    height: 60px;
+    transform: rotate(-60deg);
+    background-color: black; /* Line color */
+}
+
+.arrow-line-parallel {
+    position: absolute;
+    top: 5px; /* Adjust based on the graph position */
+    left: 100px; /* Adjust based on the annotation and graph positioning */
+    width: 1px;
+    height: 50px;
+    background-color: black; /* Line color */
+    transform: rotate(50deg);
+    transform-origin: bottom;
+}
+
+.parallel_coordinate {
+    display: flex;
+    margin-top: 40px;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: 20px;
+    margin-right: 40px;
+    padding: 10px 20px;
+    background-color: white;
+    border-radius: 10px;
+    margin-bottom: 40px;
+}
+
+.parallel_coordinate h2 {
+    position: relative;
+    text-align: center;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.parallel_container {
+    display: flex;
+    flex-direction: row;
+}
+
+#parallel_coordinate_text {
+    width: 40%; /* Set width for the text container */
+    font-size: 15px; /* Adjust font size if necessary */
+    color: black;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+footer {
+    background-color: #333; /* Dark background */
+    color: white; /* Text color */
+    text-align: center; /* Center the text */
+    padding: 20px 0; /* Space around the text */
+    position: relative; /* Keep footer at the bottom of the content */
+    width: 100%; /* Full width of the page */
+    bottom: 0; /* Position it at the bottom of the page */
+}
+
+footer p {
+    margin: 0; /* Remove default margin */
+    font-family: Arial, sans-serif;
+    font-size: 14px; /* Adjust font size */
+    margin-bottom: 10;
+}

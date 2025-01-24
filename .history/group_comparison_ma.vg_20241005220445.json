@@ -1,0 +1,45 @@
+{
+  "$schema": "https://vega.github.io/schema/vega/v5.json",
+  "width": 400,
+  "height": 200,
+  "padding": 20,
+  "title": {"text":"A title", "anchor":"middle"},
+
+"signals": [
+    {
+      "name": "tooltip",
+      "value": {},
+      "on": [
+        {"events": "rect:mouseover", "update": "datum"},
+        {"events": "rect:mouseout",  "update": "{}"}
+      ]
+    },
+    {
+      "name": "Threshold",
+      "bind":{"input": "range", "min": 0, "max": 100, "step": 1},
+      "value": 0
+    }
+  ],
+
+  "data": [
+    {
+      "name": "table",
+      "values": [
+        {"category": "Mon", "amount": 28},
+        {"category": "Tue", "amount": 55},
+        {"category": "wed", "amount": 43},
+        {"category": "Thu", "amount": 91},
+        {"category": "Fri", "amount": 81},
+        {"category": "Sat", "amount": 53},
+        {"category": "Sun", "amount": 19}   
+      ]
+    },
+    {
+      "name": "range",
+      "source": "table",
+      "transform": [
+        {"type": "filter", "expr": "datum.amount >= Threshold"}
+      ]
+    }
+  ]
+}

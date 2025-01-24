@@ -1,0 +1,56 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+  "text": "Average Unemployment Rate in Malaysia by State (2023)",
+  "fontSize": 24,  
+  "fontWeight": "bold", 
+  "font": "Time News Roman", 
+  "anchor": "start"},
+  "width": 1000,
+  "height": 400,
+  "projection": {"type": "equirectangular"},
+  "data": {
+    "url": "ne_1.topojson.json",
+    "format": {"type": "topojson", "feature": "ne_10m_admin_1_states_provinces"}
+  },
+  "transform": [
+    {
+      "lookup": "properties.name",
+      "from": {
+        "data": {
+          "url": "lfs_qtr_state.csv"
+        },
+        "key": "state",
+        "fields": ["avg_u_rate"]
+      }
+    }
+  ],
+  "mark": {
+    "type": "geoshape",
+    "stroke":"#000000",
+    "strokeWidth":0.5
+  },
+  "encoding": {
+    "color": {
+      "field": "avg_u_rate",
+      "type": "quantitative",
+      "scale": {
+        "type": "threshold",
+        "domain": [1, 2, 3, 4],
+        "range": ["#fef0d9", "#fdd49e", "#fc8d59", "#e34a33", "#b30000"]
+      },
+      "legend": {
+        "title": "Unemployment Rate (%)",
+        "labelExpr": "datum.label == 4 ? '>4' : datum.label",
+        "orient": "bottom-right",
+        "padding": 10,
+        "titleFontSize": 12,
+        "labelFontSize": 10
+      }
+    },
+    "tooltip": [
+      {"field": "properties.name", "type": "nominal", "title": "State"},
+      {"field": "avg_u_rate", "type": "quantitative", "title": "Average Unemployment Rate (%)"}
+    ]
+  }
+}

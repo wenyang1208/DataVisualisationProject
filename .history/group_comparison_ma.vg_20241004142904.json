@@ -1,0 +1,53 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Average Unemployment Rate in Malaysia by State (2023)",
+    "fontSize": 24,  
+    "fontWeight": "bold", 
+    "font": "Time News Roman", 
+    "anchor": "middle"},
+  "width": 250,
+  "height": 200,
+  "data": {"url": "lfs_qtr.csv"},
+  "transform": [
+    {
+      "fold": ["Employed", "Unemployed", "Outside"],
+      "as": ["Labor Force Category", "Labor Force Value"]
+    }
+  ],
+  "facet": {
+    "field": "Labor Force Category", 
+    "type": "nominal",
+    "header": {
+      "title": null, 
+      "labelFontSize": 14, 
+      "labelFontWeight": "bold"
+    }
+  },
+  "spec": {
+    "mark": {"type": "bar"},
+    "encoding": {
+      "y": {
+        "field": "year", 
+        "type": "ordinal", 
+        "title": "Year",
+        "axis": {"labelAngle": 0}
+      },
+      "x": {
+        "field": "Labor Force Value", 
+        "type": "quantitative", 
+        "title": "Number of People (in Thousands)"
+      },
+      "color": {
+        "field": "Labor Force Category", 
+        "type": "nominal",
+        "legend": null
+      },
+      "tooltip": [
+        {"field": "year", "type": "ordinal"},
+        {"field": "Labor Force Value", "type": "quantitative"},
+        {"field": "Labor Force Category", "type": "nominal"}
+      ]
+    }
+  }
+}

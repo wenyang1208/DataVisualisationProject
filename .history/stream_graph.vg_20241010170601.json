@@ -1,0 +1,79 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "GDP Annual Growth by Economic Sector (2015-2023)",
+    "fontSize": 24,
+    "fontWeight": "bold",
+    "font": "Times New Roman",
+    "anchor": "middle"
+  },
+  "width": 1000,
+  "height": 400,
+  "data": {
+    "url": "gdp_qtr_real_supply.csv"
+  },
+  "transform": [
+    {
+      "timeUnit": "year",
+      "field": "date",
+      "as": "year"
+    },
+    {
+      "aggregate": [{"op": "sum", "field": "value", "as": "total_value"}],
+      "groupby": ["year", "sector"]
+    }
+  ],
+  "mark": {
+    "type": "area",
+    "interpolate": "basis",
+    "tooltip": true
+  },
+  "params": [{
+    "name": "sector",
+    "select": {"type": "point", "fields": ["sector"]},
+    "bind": "legend"
+  }],
+  "encoding": {
+    "x": {
+      "field": "year",
+      "type": "temporal",
+      "timeUnit": "year",
+      "axis": {
+        "domain": false,
+        "format": "%Y",
+        "tickSize": 0,
+        "title": "Year",
+        "labelOverlap": "parity", 
+        "tickCount": "year",
+        "labelFontSize":15,
+        "titleFontSize":15 
+      }
+    },
+    "y": {
+      "field": "total_value",
+      "type": "quantitative",
+      "axis": {"title": "GDP Annual Growth (%)","labelFontSize":15,"titleFontSize":15},
+      "stack": "center"
+    },
+    "color": {
+      "field": "sector",
+      "type": "nominal",
+      "scale": {"scheme": "set2"},
+      "legend": {"title": "Economic Sector","labelFontSize":15,"titleFontSize":15}
+    },
+    "opacity": {
+      "condition": {"param": "sector", "value": 1},
+      "value": 0.2
+    },
+    "tooltip": [
+      {"field": "year", "type": "temporal", "timeUnit": "year", "title": "Year"},
+      {"field": "sector", "type": "nominal", "title": "Economic Sector"},
+      {"field": "total_value", "type": "quantitative", "title": "GDP Annual Growth (%)", "format": ".2f"}
+    ]
+  },
+  "config": {
+    "axisX": {
+      "labelAngle": -45
+    }
+  }
+}

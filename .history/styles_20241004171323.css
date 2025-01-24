@@ -1,0 +1,20 @@
+.unemployment_rate_map{
+    display: flex;
+    justify-content: center;
+    position: relative;
+    display: inline-block;
+}
+
+.group_comparison{
+    display: flex;
+    justify-content: center;
+}
+
+.annotation {
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.8); /* Optional: semi-transparent background for visibility */
+    padding: 5px;
+    border-radius: 3px;
+    font-size: 12px;
+    border: 1px solid red; /* Optional: border to highlight the annotation */
+  }

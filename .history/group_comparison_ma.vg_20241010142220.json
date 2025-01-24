@@ -1,0 +1,81 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {"url": "lfs_qtr.csv"},
+  "transform": [
+    {
+      "fold": ["Employed", "Unemployed", "Outside Labor"],
+      "as": ["Labor Force Category", "Labor Force Value"]
+    },
+    {
+      "calculate": "datum['Labor Force Category'] == 'Unemployed' && (datum.Year == '2020' || datum.Year == '2021') ? 'highlight' : 'normal'",
+      "as": "colorCategory"
+    }
+  ],
+  "facet": {
+    "field": "Labor Force Category",
+    "type": "nominal",
+    "header": {
+      "title": null,
+      "labelFontSize": 18,
+      "labelFont": "Times New Roman",
+      "labelFontWeight": "bold",
+      "labelPadding": 10
+    }
+  },
+  "spec": {
+    "width": 420,
+    "layer": [
+      {
+        "mark": {"type": "bar"},
+        "encoding": {
+          "size": {
+            "field":
+          }
+          "y": {
+            "field": "Year",
+            "type": "ordinal",
+            "title": "Year",
+            "axis": {"labelAngle": 0}
+          },
+          "x": {
+            "field": "Labor Force Value",
+            "type": "quantitative",
+            "title": "Number of People (in Thousands)"
+          },
+          "color": {
+            "field": "colorCategory",
+            "type": "nominal",
+            "scale": {
+              "domain": ["normal", "highlight"],
+              "range": ["#c4c3c2", "#ff6848"]
+            },
+            "legend": null
+          },
+          "tooltip": [
+            {"field": "Year", "type": "ordinal", "title": "Year"},
+            {"field": "Labor Force Value", "type": "quantitative", "title": "Number of People (in thousands)", "format": ",.2f"},
+            {"field": "Labor Force Category", "type": "nominal", "title": "Category"}
+          ]
+        }
+      },
+      {
+        "transform": [
+          {"filter": "datum['Labor Force Category'] === 'Unemployed'"},
+          {"filter": "datum.Year === '2020'"}
+        ],
+        "mark": {
+          "type": "text",
+          "align": "left",
+          "dx": 5,
+          "dy": -5,
+          "fontSize": 13
+        },
+        "encoding": {
+          "text": {"value": "COVID-19 causes increases in unemployment in 2020-2021."},
+          "y": {"field": "Year", "type": "ordinal"},
+          "x": {"field": "Labor Force Value", "type": "quantitative"}
+        }
+      }
+    ]
+  }
+}

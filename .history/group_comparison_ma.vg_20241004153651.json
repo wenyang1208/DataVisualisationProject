@@ -1,0 +1,59 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Labor Force Distribution in Malaysia by Category (2010-2023)",
+    "fontSize": 24,  
+    "fontWeight": "bold", 
+    "font": "Time News Roman", 
+    "anchor": "middle"},
+    "data": {"url": "lfs_qtr.csv"},
+    "transform": [
+    {
+      "fold": ["Employed", "Unemployed", "Outside Labor"],
+      "as": ["Labor Force Category", "Labor Force Value"]
+    }
+  ],
+  "facet": {
+    "field": "Labor Force Category", 
+    "type": "nominal",
+    "header": {
+      "title": null, 
+      "labelFontSize": 14, 
+      "labelFontWeight": "bold"
+    }
+  },
+  "spec": {
+    "width": 380,
+    "mark": {"type": "bar", "color": "#20B2A6","fontSize":},
+    "encoding": {
+      "y": {
+        "field": "Year", 
+        "type": "ordinal", 
+        "title": "Year",
+        "axis": {"labelAngle": 0}
+      },
+      "x": {
+        "field": "Labor Force Value", 
+        "type": "quantitative",
+        "title": "Number of People (in Thousands)"
+      },
+      "tooltip": [
+        {
+          "field": "Year", 
+          "type": "ordinal", 
+          "title": "Year"
+        },
+        {
+          "field": "Labor Force Value", 
+          "type": "quantitative", 
+          "title": "Number of People"
+        },
+        {
+          "field": "Labor Force Category", 
+          "type": "nominal", 
+          "title": "Category"
+        }
+      ]
+    }
+  }
+}

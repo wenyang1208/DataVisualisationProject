@@ -1,0 +1,78 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Employability of Labour Force in Malaysia</title>
+    <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
+    <script src="unemployment_rate.js"></script>
+    <script src="group_comparison.js"></script>
+    <script src="parallel_coordinate.js"></script>
+    <script src="stream_graph.js"></script>
+    <script src="age_group.js"></script>
+</head>
+<body>
+    <h1 id="main-title">Labor Market Trends and Gross Domestic Product (GDP) in Malaysia</h1>
+    <div class="unemployment_rate_map">
+        <h2>Average Unemployment Rate in Malaysia by State (2023)</h2>
+        <div id="map_chart"></div>
+        <div class="annotation" style="top: 60px; left: 345px;">
+            <p style="color: black;">In 2023, there were <span style="font-weight: bold">169,800</span> jobless people in Sabah.</p>
+        </div>
+        <p id="map_text"> Based on the chart, there is significant variation in unemployment rates across the country. Sabah has the highest unemployment rate at 7.525%, followed by Labuan at 6.75%, indicating potential economic challenges in East Malaysia. Terengganu (4.425%) and Kelantan (3.975%) also report relatively high rates compared to other states. 
+            <br>
+            <br>
+            On the lower end, Putrajaya has the lowest unemployment rate at just 0.825%, followed by Pulau Pinang (2.125%) and Perlis (2.175%). States like Johor, Kedah, and Selangor show moderate unemployment rates between 2.4% and 2.45%. 
+            <br>
+            <br>
+            Overall, those unemployed are generally young people, both graduates and non-graduates, who have had trouble entering the job market. Because of this, the Malaysian government is encouraging companies to open up employment opportunities specifically to young adults.
+            <!-- https://www.statista.com/statistics/319019/unemployment-rate-in-malaysia/ -->
+        </p>
+    </div>
+    <div class="group_comparison">
+        <h2>Labor Force Distribution in Malaysia by Category (2010-2023)</h2>
+        <div id="bar_chart"></div>
+    </div>
+    <div id="isotype-container">
+        <h2>Underemployment in Malaysia by Age Group (2023)</h2>
+        <div id="inner-isotype-container">
+            <div id="isotype_age"></div>
+            <p id="isotype_text">The graph shows underemployment in Malaysia by age group for 2023, using icons where each represents 6,000 individuals. Underemployment is defined as working fewer than 30 hours per week while being willing to work more.
+            <br>
+            <br>
+                <li><strong>15-24 age group:</strong> About 32,650 people are underemployed (5 icons).</li>
+                <li><strong>25-34 age group:</strong> The highest underemployment with 72,275 people (12 icons).</li>
+                <li><strong>35-44 age group:</strong> Around 30,150 people (5 icons).</li>
+                <li><strong>45+ age group:</strong> Approximately 47,775 people (8 icons).</li>
+            </ul>
+            </p>
+        </div>
+    </div>
+    <!-- <div id="stream_graph"></div> -->
+    <div class="parallel_coordinate">
+        <div class="parallel_container">
+            <div id="parallel_coordinate_plot"></div>
+            <p id="parallel_coordinate_text">
+            States with larger populations, like Selangor and Johor, generally have higher GDP growth, while smaller states such as Labuan and Perlis tend to have lower growth. However, exceptions like Sabah, with a large population but low GDP growth, and Putrajaya, with a small population but high GDP growth, show that this is not a strict rule.
+            <br>
+            <br>
+            Regions with higher populations, such as Selangor, Johor, and Kuala Lumpur, also have higher labor force participation rates, indicating more active labor markets. Conversely, smaller states like Labuan and Perlis have lower participation rates, reflecting less active workforces. Notably, states like Pahang and Selangor, which experience higher GDP growth, tend to have moderate unemployment rates, while lower GDP growth states like Sabah and Sarawak face higher unemployment.
+            <br>
+            <br>
+            Putrajaya is a standout due to its small population, high GDP growth, strong participation rate, and very low unemployment. Meanwhile, despite Sabah's high participation rate, its elevated unemployment suggests localized economic challenges. High-population states like Selangor and Johor demonstrate economic strength with both high GDP growth and lower unemployment rates.
+            </p>
+        </div>
+    </div>
+</body>
+</html>
+
+<!-- "title": {
+    "text": "Underemployment in Malaysia by Age Group (2023)",
+    "fontSize": 24,
+    "fontWeight": "bold",
+    "font": "Times New Roman",
+    "anchor": "start",
+    "dy": -20
+  }, -->

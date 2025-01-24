@@ -1,0 +1,53 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Employability of Labour Force in Malaysia</title>
+    <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
+    <script src="unemployment_rate.js"></script>
+    <script src="group_comparison.js"></script>
+    <script src="parallel_coordinate.js"></script>
+    <script src="stream_graph.js"></script>
+    <script src="age_group.js"></script>
+</head>
+<body>
+    <h1 id="main-title">Labor Market Trends and Gross Domestic Product (GDP) in Malaysia</h1>
+    <div class="unemployment_rate_map">
+        <h2>Average Unemployment Rate in Malaysia by State (2023)</h2>
+        <div id="map_chart"></div>
+        <div class="annotation" style="top: 50px; left: 350px;">
+            <p style="color: black;">In 2023, there were <span style="font-weight: bold">169,800</span> jobless people in Sabah.</p>
+        </div>
+        <p id="map_text">States with larger populations, like Selangor and Johor, generally have higher GDP growth, while smaller states such as Labuan and Perlis tend to have lower growth. However, exceptions like Sabah, with a large population but low GDP growth, and Putrajaya, with a small population but high GDP growth, show that this is not a strict rule.
+        </p>
+    </div>
+    <div class="group_comparison">
+        <div id="bar_chart"></div>
+    </div>
+    <div class="parallel_coordinate">
+        <div class="parallel_container">
+            <div id="parallel_coordinate_plot"></div>
+            <p id="parallel_coordinate_text">
+            States with larger populations, like Selangor and Johor, generally have higher GDP growth, while smaller states such as Labuan and Perlis tend to have lower growth. However, exceptions like Sabah, with a large population but low GDP growth, and Putrajaya, with a small population but high GDP growth, show that this is not a strict rule.
+            <br>
+            <br>
+            Regions with higher populations, such as Selangor, Johor, and Kuala Lumpur, also have higher labor force participation rates, indicating more active labor markets. Conversely, smaller states like Labuan and Perlis have lower participation rates, reflecting less active workforces. Notably, states like Pahang and Selangor, which experience higher GDP growth, tend to have moderate unemployment rates, while lower GDP growth states like Sabah and Sarawak face higher unemployment.
+            <br>
+            <br>
+            Putrajaya is a standout due to its small population, high GDP growth, strong participation rate, and very low unemployment. Meanwhile, despite Sabah's high participation rate, its elevated unemployment suggests localized economic challenges. High-population states like Selangor and Johor demonstrate economic strength with both high GDP growth and lower unemployment rates.
+            </p>
+        </div>
+    </div>
+    <div class="stream-and-isotype-container">
+        <div id="stream_graph"></div>
+        <div id="isotype-container">        
+            <div id="isotype_age"></div>
+            <p id="text2">6,000 thousands people per icon
+            </p>
+        </div>
+    </div>
+</body>
+</html>

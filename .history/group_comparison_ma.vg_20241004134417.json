@@ -1,0 +1,71 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 250,
+  "height": 200,
+  "data": {"url": "lfs_qtr.csv"},
+  "transform": [
+    {
+      "fold": ["lf_employed", "lf_unemployed", "lf_outside"],
+      "as": ["Labor Force Category", "Labor Force Value"]
+    },
+    {
+      "lookup": "Labor Force Category",
+      "from": {
+        "key": "key",
+        "fields": ["value"],
+        "value": [
+          {
+            "key": "lf_employed",
+            "value": "Employed"
+          },
+          {
+            "key": "lf_unemployed",
+            "value": "Unemployed"
+          },
+          {
+            "key": "lf_outside",
+            "value": "Outside Labor Force"
+          }
+        ]
+      },
+      "as": "Category Label"
+    }
+  ],
+  "facet": {
+    "field": "Category Label", 
+    "type": "nominal", 
+    "columns": 3,
+    "title": "Labor Force Category",
+    "header": {
+      "title": null, 
+      "labelFontSize": 14, 
+      "labelFontWeight": "bold"
+    }
+  },
+  "spec": {
+    "mark": {"type": "bar"},
+    "encoding": {
+      "y": {
+        "field": "year", 
+        "type": "ordinal", 
+        "title": "Year",
+        "axis": {"labelAngle": 0}
+      },
+      "x": {
+        "field": "Labor Force Value", 
+        "type": "quantitative", 
+        "title": "Number of People (in Thousands)"
+      },
+      "color": {
+        "field": "Category Label", 
+        "type": "nominal",
+        "legend": null
+      },
+      "tooltip": [
+        {"field": "year", "type": "ordinal"},
+        {"field": "Labor Force Value", "type": "quantitative"},
+        {"field": "Category Label", "type": "nominal"}
+      ]
+    }
+  }
+}

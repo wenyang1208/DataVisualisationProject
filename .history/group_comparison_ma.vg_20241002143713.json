@@ -1,0 +1,12 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": 800,
+    "height": 600,
+    "data": {"url": "lfs_qtr.csv"},
+    "mark": {"type": "bar"},
+    "encoding": {
+      "x": {"timeUnit": "year", "field": "year", "type": "ordinal"},
+      "y": {"aggregate": "sum", "field": "lf_employed"},
+      "color": {"field": "continent"}
+    }
+  }

@@ -1,0 +1,41 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "description": "Parallel coordinate plot for Malaysian states with GDP, population, participation rate, and unemployment rate.",
+    "data": {
+      "url": "relationship.csv"
+    },
+    "transform": [
+      {
+        "fold": ["population", "annual_growth_GDP", "participation_rate", "unemployment_rate"],
+        "as": ["Variable", "Value"]
+      }
+    ],
+    "width": 800,
+    "height": 400,
+    "mark": {
+      "type": "line",
+      "strokeWidth": 2
+    },
+    "encoding": {
+      "x": {
+        "field": "Variable",
+        "type": "nominal",
+        "axis": {"labelAngle": 0, "title": "Variables"}
+      },
+      "y": {
+        "field": "Value",
+        "type": "quantitative",
+        "scale": {"zero": false},
+        "axis": {"title": "Values"}
+      },
+      "color": {
+        "field": "state",
+        "type": "nominal",
+        "legend": {"title": "state"}
+      },
+      "detail": {
+        "field": "state"
+      }
+    }
+  }
+  

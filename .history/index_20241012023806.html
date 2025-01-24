@@ -1,0 +1,126 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Employability of Labour Force in Malaysia</title>
+    <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
+    <script src="unemployment_rate.js"></script>
+    <script src="group_comparison.js"></script>
+    <script src="parallel_coordinate.js"></script>
+    <script src="stream_graph.js"></script>
+    <script src="age_group.js"></script>
+</head>
+<body>
+    <h1 id="main-title">From Labor Market Trends to GDP: Analysing Malaysia's Economic Landscape</h1>
+    <div class="unemployment_rate_map">
+        <h2>Average Unemployment Rate in Malaysia by State (2023)</h2>
+        <div id="map_chart"></div>
+        <div class="annotation" style="top: 60px; left: 345px;">
+            <div class="arrow-line"></div> <!-- Line from the annotation to the graph -->
+            <p style="color: black;">In <span style="font-weight: bold">2023</span>, there were <span style="font-weight: bold">169,800</span> jobless people in <span style="font-weight: bold">Sabah</span>.</p>
+        </div>
+        <p id="map_text"> Based on the chart, there is significant variation in unemployment rates across the country. <span style="font-weight: bold">Sabah</span> has the highest unemployment rate at <span style="font-weight: bold">7.525%</span>, followed by <span style="font-weight: bold">Labuan</span> at <span style="font-weight: bold">6.75%</span>, indicating potential economic challenges in East Malaysia. <span style="font-weight: bold">Terengganu (4.425%)</span> and <span style="font-weight: bold">Kelantan (3.975%)</span> also report relatively high rates compared to other states. 
+            <br>
+            <br>
+            On the lower end, <span style="font-weight: bold">Putrajaya</span> has the <span style="font-weight: bold">lowest</span> unemployment rate at just <span style="font-weight: bold">0.825%</span>, followed by <span style="font-weight: bold">Pulau Pinang (2.125%)</span> and <span style="font-weight: bold">Perlis (2.175%)</span>. States like <span style="font-weight: bold">Johor</span>, <span style="font-weight: bold">Kedah</span>, and <span style="font-weight: bold">Selangor</span> show moderate unemployment rates between <span style="font-weight: bold">2.4%</span> and <span style="font-weight: bold">2.45%</span>. 
+            <br>
+            <br>
+            Overall, those <span style="font-weight: bold">unemployed</span> are generally young people, both <span style="font-weight: bold">graduates</span> and <span style="font-weight: bold">non-graduates</span>, who have had trouble entering the job market. Because of this, the Malaysian government is encouraging companies to open up employment opportunities specifically to young adults.
+            <!-- https://www.statista.com/statistics/319019/unemployment-rate-in-malaysia/ -->
+        </p>
+    </div>
+    <div class="group_comparison">
+        <h2>Labor Force Distribution in Malaysia by Category (2010-2023)</h2>
+        <div id="bar_chart"></div>
+    </div>
+    <div id="isotype-container">
+        <h2>Underemployment in Malaysia by Age Group (2023)</h2>
+        <div id="inner-isotype-container">
+            <div id="isotype_age">
+                <!-- Isotype graph content goes here -->
+            </div>
+            <div class="annotation" style="position: absolute; top: 1360px; left: 600px;">
+                <div class="arrow-line-isotype"></div>
+                    In recent years, <span style="font-weight: bold">tertiary-educated workers</span> risk <span style="font-weight: bold">underemployment</span>
+                    <br>
+                    without market flexibility, due to the <span style="font-weight: bold">increasing</span> demand for
+                    <br>
+                    <span style="font-weight: bold">advanced qualifications</span> in the job market.
+                    <!-- https://www.bernama.com/en/thoughts/news.php?id=2240055 -->
+                </p>
+            </div>
+            <p id="isotype_text">
+                In this context, <span style="font-weight: bold">underemployment</span> is defined as working <span style="font-weight: bold">fewer</span> than <span style="font-weight: bold">30 hours per week</span> while being willing to work more.
+                <br><br>
+                In <span style="font-weight: bold">2023</span>, <span style="font-weight: bold">underemployment</span> in Malaysia shows notable differences across age groups. The <span style="font-weight: bold">25-34</span> age group experiences the <span style="font-weight: bold">highest</span> rate, with approximately <span style="font-weight: bold">72,275</span> individuals underemployed, equating to <span style="font-weight: bold">12</span> icons, each representing <span style="font-weight: bold">6,000</span> people. The <span style="font-weight: bold">45+</span> age group follows with around <span style="font-weight: bold">47,775</span> individuals, or <span style="font-weight: bold">8</span> icons. Both the <span style="font-weight: bold">15-24</span> and <span style="font-weight: bold">35-44</span> age groups have <span style="font-weight: bold">lower</span> underemployment rates, with <span style="font-weight: bold">32,650</span> and <span style="font-weight: bold">30,150</span> individuals respectively, represented by <span style="font-weight: bold">5</span> icons each.
+                <br><br>
+                Overall, it highlights that while the <span style="font-weight: bold">25-34</span> age group faces the <span style="font-weight: bold">most</span> significant underemployment, underemployment remains a concern across all age groups, particularly for those aged 45 and older.
+            </p>
+        </div>
+    </div>
+    <div class="gdp-stream">
+        <h2>GDP Annual Growth by Economic Sector (2015-2023)</h2>
+        <div id="stream_graph"></div>
+        <div class="arrow-line-stream"></div>
+        <div class="annotation" style="position: absolute; top: 1890px; right: 35px; background-color: rgba(255, 255, 255, 0.8); border-radius: 5px; border: 1px solid black;">
+            <p>
+                Malaysia GDP is estimated to be
+                <br>
+                <span style="font-weight: bold">$1.596 trillion</span> dollars by World
+                <br>
+                Economics for <span style="font-weight: bold">2023</span> - <span style="font-weight: bold">37%</span> larger
+                <br>
+                than official estimates.
+                <br>
+                <br>
+                The official estimate for
+                <br>
+                Malaysia's GDP published by
+                <br>
+                the World Bank was <span style="font-weight: bold">$1.162</span>
+                <br>
+                <span style="font-weight: bold">trillion</span> at the end of <span style="font-weight: bold">2023</span> in
+                <br>
+                puchasing power partity terms.
+                <!-- https://www.nst.com.my/business/economy/2024/07/1071724/selangor-grew-and-contributed-most-gdp-2023 -->
+            </p>
+        </div>
+    </div>
+    <div class="parallel_coordinate">
+        <h2>Relationships between Demographics, GDP, and Labor Market Trends in Malaysia (2023)</h2>
+        <div class="parallel_container">
+            <div id="parallel_coordinate_plot"></div>
+            <div class="annotation" style="top: 2320px; left: 30px;">
+                <div class="arrow-line-parallel"></div>
+                <p style="color: black;">
+                    In <span style="font-weight: bold">2023</span>, 
+                    <br>
+                    <span style="font-weight: bold; color: #FFA500;">Selangor</span> 
+                    <br>
+                    contributed the
+                    <br>
+                    lion share of
+                    <br>
+                    GDP at <span style="font-weight: bold">25.9%</span>, 
+                    <br>
+                    or <span style="font-weight: bold">RM406.1 billion</span>
+                    <br>
+                    in Malaysia.
+                </p>
+            </div>
+            <p id="parallel_coordinate_text">
+            Larger states like <span style="font-weight: bold; color: #FFA500;">Selangor</span> and <span style="font-weight: bold; color:#86C1DC">Johor</span> tend to have <span style="font-weight: bold">higher GDP growth</span>, while smaller states such as <span style="font-weight: bold; color: #965093;">Labuan</span> and <span style="font-weight: bold; color:#f000ff">Perlis</span> experience <span style="font-weight: bold">lower growth</span>. <span style="font-weight: bold">Exceptions</span> include <span style="font-weight: bold; color:#C71585">Sabah</span>, with a <span style="font-weight: bold">large population</span> but <span style="font-weight: bold">low GDP growth</span>, and <span style="font-weight: bold; color:#fdabab ">Putrajaya</span>, with a <span style="font-weight: bold">small population</span> but <span style="font-weight: bold">high GDP growth</span>.
+            <br>
+            <br>
+            Regions with larger populations, like <span style="font-weight: bold; color: #FFA500;">Selangor</span>, <span style="font-weight: bold; color:#86C1DC">Johor</span>, and <span style="font-weight: bold; color:#9932CC">Kuala Lumpur</span>, have <span style="font-weight: bold">higher</span> labor force <span style="font-weight: bold">participation rates</span>, while smaller states like <span style="font-weight: bold; color: #965093">Labuan</span> and <span style="font-weight: bold; color:#f000ff">Perlis</span> show <span style="font-weight: bold">lower rates</span>. <span style="font-weight: bold">Higher GDP growth</span> states, like <span style="font-weight: bold;color:#2E8B57">Pahang</span> and <span style="font-weight: bold; color: #FFA500">Selangor</span>, have <span style="font-weight: bold">moderate unemployment</span>, whereas <span style="font-weight: bold">lower GDP growth</span> states, such as <span style="font-weight: bold; color:#C71585">Sabah</span> and <span style="font-weight: bold;color:#6A5ACD">Sarawak</span>, face <span style="font-weight: bold">higher unemployment</span>.
+            </p>
+        </div>
+    </div>
+</body>
+<footer>
+    <p>&copy; 2024 Your Name or Company. All rights reserved.</p>
+</footer>
+</html>
